@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "autoenchant",
+  "version": "1.1.1-1.21.8",
+  "name": "Auto Enchant & Grind (1.21.8)",
+  "description": "Auto enchanting/grinding with server-recorded clicks. First enchant option only.",
+  "authors": [
+    "you"
+  ],
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.example.autoenchant.AutoEnchantMod"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.17.0",
+    "fabric-api": "*",
+    "minecraft": "1.21.8"
+  }
+}
