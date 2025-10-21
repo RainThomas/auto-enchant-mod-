@@ -1,0 +1,29 @@
+name: build-mod
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main, master ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: gradle
+      - name: Install Gradle and generate wrapper
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gradle
+          gradle --version
+          gradle wrapper --gradle-version 8.8
+      - name: Build with wrapper
+        run: ./gradlew build --no-daemon
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: auto-enchant-mod
+          path: build/libs/*.jar
